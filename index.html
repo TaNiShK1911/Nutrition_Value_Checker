@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritional Value Checker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, rgba(144, 238, 144, 0.9), rgba(0, 128, 0, 0.9)); /* Green gradient */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white; /* Default text color for better visibility */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #4CAF50; /* Label color */
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            padding: 10px;
+            transition: border-color 0.3s;
+            width: 100%;
+            color: black; /* Change file name color to black */
+        }
+
+        input[type="file"]::file-selector-button {
+            color: black; /* Change button text color to black */
+            background-color: #4CAF50; /* Button background color */
+        }
+
+        input[type="file"]:focus {
+            border-color: #45a049;
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #result {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative; /* For positioning the chart */
+        }
+
+        #chartContainer {
+            width: 100%;
+            height: 200px; /* Adjust height as needed */
+        }
+
+        p {
+            margin: 10px 0;
+            color: #555;
+            font-size: 16px;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+</head>
+<body>
+    <div class="container">
+        <h1>Nutritional Value Checker</h1>
+        <form id="uploadForm">
+            <label for="imageUpload" class="upload-label">Upload Image of Nutritional Label:</label>
+            <input type="file" id="imageUpload" accept="image/*" required>
+            <button type="submit" class="submit-btn">Analyze</button>
+        </form>
+        <div id="result" class="hidden">
+            <h2>Results</h2>
+            <div id="chartContainer">
+                <canvas id="myChart"></canvas> <!-- Canvas for the pie chart -->
+            </div>
+            <p><strong>Nutritional Score:</strong> <span id="score"></span>/100</p>
+            <p id="evaluation"></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission for demo purposes
+
+            // Simulating a score for demonstration (replace with actual score calculation)
+            const score = Math.floor(Math.random() * 101);
+            document.getElementById('score').textContent = score;
+
+            // Show the result section
+            document.getElementById('result').classList.remove('hidden');
+
+            // Create and display the pie chart
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Score', 'Remaining'], // Updated labels for clarity
+                    datasets: [{
+                        data: [score, 100 - score],
+                        backgroundColor: [
+                            '#FF6384', // Pink
+                            '#36A2EB', // Blue
+                            '#FFCE56', // Yellow
+                        ],
+                        borderColor: '#fff',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: {
+                        animateRotate: true, // Rotate animation
+                        duration: 1000 // Animation duration in milliseconds
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

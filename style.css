@@ -1,0 +1,94 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #a8e0e0, #f0f8ff); /* Gradient background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.2s; /* Add a hover effect */
+}
+
+.container:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333; /* Darker text for contrast */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #4CAF50; /* Green color for labels */
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+    border: 2px solid #4CAF50; /* Green border for the file input */
+    border-radius: 5px;
+    padding: 10px;
+    transition: border-color 0.3s; /* Transition for border color */
+}
+
+input[type="file"]:focus {
+    border-color: #45a049; /* Darker green when focused */
+}
+
+.submit-btn {
+    padding: 12px 25px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Transition for button */
+}
+
+.submit-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.hidden {
+    display: none;
+}
+
+#result {
+    margin-top: 20px;
+    background-color: #f9f9f9; /* Light gray background for results */
+    border: 1px solid #ddd; /* Border for results box */
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    margin: 10px 0;
+    color: #555; /* Gray text for results */
+    font-size: 16px;
+}
+
+strong {
+    color: #333; /* Darker color for strong text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .container {
+        width: 90%;
+    }
+}
